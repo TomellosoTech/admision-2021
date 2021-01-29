@@ -166,6 +166,8 @@ body {
     @media only screen and (max-width: 56.25em) {
       .row [class^="col-"] {
         width: 100% !important; } }
+  .row .col-1-of-1 {
+    width: calc(100%); }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -206,4 +208,17 @@ h2 {
   margin-bottom: 1.5rem; }
 
 .header .text-box {
+  text-align: center; }
+
+h3 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center; }
+
+.footer {
+  border-top: 3px solid #585858;
+  padding-top: 2rem;
   text-align: center; }
