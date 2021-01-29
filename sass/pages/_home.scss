@@ -1,0 +1,33 @@
+.explorer-text-box{
+
+    p{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+#dashboard{
+    height: 80vh;
+    border: 0;
+    width: 100%;
+
+    @include respond(phone) {
+        display: none;
+    }
+}
+
+.container{
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #585858;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
