@@ -126,9 +126,25 @@ h3{
     background-color: #ff002601;
 }
 
-.video-index ul{
-    margin-left: 2.5rem;
-    li{
-        margin-top:.5rem;
+.video-index {
+    ul{
+        margin-left: 0rem;
+        list-style: none;
+        li{
+            // margin-top:0;
+        }
     }
+    p{
+        text-transform: uppercase;
+        strong{
+            font-weight: 300;
+            font-size: 1.85rem;
+        }
+
+        // font-family: ;
+    }
+}
+
+.video-frame{
+    margin-top: 1.5rem;
 }
