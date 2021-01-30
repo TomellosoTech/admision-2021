@@ -1,5 +1,14 @@
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1CPCJ902BD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1CPCJ902BD');
+    </script>
     <title>Admisión 2º ciclo de Infantil, Primaria, ESO y Bachillerato, curso 2021/22, Tomelloso | Toda la información en un solo sitio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -43,163 +52,294 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <style>
-        /* body{ margin:0; padding: 0;}
-        html, body, iframe{ width:100%; height: 100%; border: 0} */
-    </style>
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@3.0.0/dist/umd/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-auth@3.0.0/dist/umd/auth.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer@3.0.0/dist/umd/feature-layer.umd.js"></script>
+
 </head>
 <body>
 
     <header class="header">
         <div class="logo-box">
-          <img src="images/logo-ayuntamiento-tomelloso.png" alt="Logo" class="logo">
+            <img src="images/logo-ayuntamiento-tomelloso.png" alt="Logo" class="logo">
         </div>
 
         <div class="text-box">
-          <h1 class="heading-primary">
-            <span class="heading-primary-main">Admisión 2º ciclo de Infantil, Primaria, ESO y Bachillerato</span>
-            <span class="heading-primary-sub">curso 2021/22, Tomelloso</span>
-          </h1>
+            <h1 class="heading-primary">
+                <span class="heading-primary-main">Admisión 2º ciclo de Infantil, Primaria, ESO y Bachillerato</span>
+                <span class="heading-primary-sub">curso 2021/22, Tomelloso</span>
+            </h1>
         </div>
-      </header>
-      <!-- <div class="container">
+    </header>
+    <!-- <div class="container">
         <h2>Proximamente más información</h2>
-      </div> -->
+    </div> -->
 
     <div class="container">
-        <h2>FECHAS E INFORMACIÓN DEL PROCESO</h2>
+        <h2>INFORMACIÓN DEL PROCESO</h2>
         <div class="row">
-            <div class="col-1-of-2">
-                <p>Fechas del proceso, curso 2021/2022:</p>
-
-                <ul>
-                    <li><strong>Del 1 al 26 de febrero</strong>: Plazo de presentación de solicitudes.</li>
-                    <li><strong>26 de enero</strong>: Publicación de vacantes provisionales y Resoluciones provinciales.</li>
-                    <li><strong>26 de abril</strong>: Publicación del Baremo provisional. Reclamaciones desde el 27 de abril hasta el 3 de mayo (ambos incluidos).</li>
-                    <li><strong>28 de abril</strong>: Sorteo público para resolver situaciones de empate. </li>
-                    <li><strong>Entre el 12 y 21 de mayo</strong>: Información a familias sobre escolarización provisional de alumnado de inclusión educativa.</li>
-                    <li><strong>28 de mayo</strong>: Publicación del Baremo Definitivo y la Resolución Provisional. Reclamaciones desde el 29 de mayo hasta el 4 de junio (ambos incluidos).</li>
-                    <li><strong>18 de junio</strong>: Plazo máximo para renunciar a participar en el Proceso de Admisión de Alumnado.</li>
-                    <li><strong>28 de junio</strong>: Publicación de la Resolución Definitiva del Proceso de Admisión de Alumnado.</li>
-                    <li><strong>Del 29 de junio al 6 de julio</strong>: Plazo de solicitudes a vacantes resultantes (oficio, agrupamiento de hermanos y mejora de opción. (Sólo participantes en el proceso de admisión).</li>
-                    <li><strong>15 de junio</strong>: Comienzo del “plazo extraordinario” de solicitudes.</li>
-                    <li><strong>Del 29 de junio al 6 de julio</strong>: Plazo de matriculación de alumnado de E. Infantil y Primaria.</li>
-                    <li><strong>Del 29 de junio al 9 de julio</strong>: Plazo de matriculación de alumnado de ESO y Bachillerato.</li>
-                    <li><strong>21 de Julio</strong>: Adjudicación de vacantes resultantes, oficio, agrupamiento de hermanos y mejora de opción. Matriculación 1 y 2 de septiembre.</li>
-                    <li><strong>7 de septiembre</strong>: 1ªAdjudicación de solicitudes de plazo extraordinario presentadas desde del 15 de junio a 31 de agosto.</li>
-                    <li><strong>Después del 7 de septiembre</strong>. Asignación de vacantes para solicitudes extraordinarias presentadas a partir del 1 de septiembre. Todos los niveles.</li>
-                </ul>
-            </div>
             <div class="col-1-of-2">
                 <h3>ACCESO A 2º Ciclo de E. Infantil. Y PRIMARIA</h3>
                 <div style="--aspect-ratio: 16/9;">
                     <iframe
-                      src="https://docs.google.com/presentation/d/e/2PACX-1vRf5tMkVGudZFQAuyawnMc5S5QBxVM9AsyooqFkTpSZIB5pxq5lpCnhd4flQtIOqLt-ACev5ITjJyaL/embed?start=true&loop=false&delayms=3000"
-                      width="560"
-                      height="315"
-                      frameborder="0"
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vRf5tMkVGudZFQAuyawnMc5S5QBxVM9AsyooqFkTpSZIB5pxq5lpCnhd4flQtIOqLt-ACev5ITjJyaL/embed?start=true&loop=true&delayms=3000"
+                    width="560"
+                    height="315"
+                    frameborder="0"
                     >
-                    </iframe>
-                </div>
-
-                <h3>ACCESO A ESO Y BACHILLERATO</h3>
-                <div style="--aspect-ratio: 16/9;">
-                    <iframe
-                        src="https://docs.google.com/presentation/d/e/2PACX-1vRiTABryg70Nr_TexrEKzm6Fb3fZKL3fTZyn7mBJ4IR5ugOPsVzdj6Az8a-60oOtGJF8RR9QWpIxI9S/embed?start=true&loop=false&delayms=3000"
-                        width="560"
-                        height="315"
-                        frameborder="0"
-                    >
-                    </iframe>
-
-                </div>
+                </iframe>
             </div>
-
+            <p class="text-box">
+                <a href="https://docs.google.com/presentation/d/e/2PACX-1vRf5tMkVGudZFQAuyawnMc5S5QBxVM9AsyooqFkTpSZIB5pxq5lpCnhd4flQtIOqLt-ACev5ITjJyaL/pub?start=false&loop=true&delayms=3000">
+                    Abrir a pantalla completa
+                </a>
+            </p>
         </div>
+        <div class="col-1-of-2">
 
+
+            <h3>ACCESO A ESO Y BACHILLERATO</h3>
+            <div style="--aspect-ratio: 16/9;">
+                <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vRiTABryg70Nr_TexrEKzm6Fb3fZKL3fTZyn7mBJ4IR5ugOPsVzdj6Az8a-60oOtGJF8RR9QWpIxI9S/embed?start=true&loop=true&delayms=3000"
+                width="560"
+                height="315"
+                frameborder="0"
+                >
+            </iframe>
+        </div>
+        <p class="text-box">
+            <a href="https://docs.google.com/presentation/d/e/2PACX-1vRiTABryg70Nr_TexrEKzm6Fb3fZKL3fTZyn7mBJ4IR5ugOPsVzdj6Az8a-60oOtGJF8RR9QWpIxI9S/pub?start=false&loop=false&delayms=3000">
+                Abrir a pantalla completa
+            </a>
+        </p>
+    </div>
+
+</div>
+
+<h2>Calendario del proceso de Admisión de Alumnado</h2>
+<div class="row">
+    <div class="col-1-of-1 explorer-text-box">
+        <p>
+            Este calendarios ha sido generado a partir de la información del portal de Educación de la Junta de Comunidades de Castilla la Mancha.
+            Para su seguridad verifique siempre las fechas en el propio <a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/calendario-proceso-admision-alumnado-curso-2021-2022-segund">calendario del propio portal de la junta</a>.
+        </p>
+        <iframe id="month-calendar" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FMadrid&amp;src=YjhqbWFlMHZpZ2k2ODdpM2k0cDI2YmVpcDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%233F51B5&amp;showTz=0&amp;showCalendars=0&amp;showPrint=0&amp;showDate=1&amp;showNav=1&amp;showTitle=0" style="border-width:0;width:100%" height="600" frameborder="0" scrolling="no"></iframe>
+        <iframe id="agenda-calendar" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FMadrid&amp;src=YjhqbWFlMHZpZ2k2ODdpM2k0cDI2YmVpcDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%233F51B5&amp;showTz=0&amp;showCalendars=0&amp;showPrint=0&amp;showDate=1&amp;showNav=1&amp;showTitle=0&amp;mode=AGENDA" style="border-width:0;width:100%" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>
 
 <!--
-        <div class="row">
-            <div class="col-1-of-2">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat dui eget orci laoreet, eu bibendum erat aliquam. Ut et eros sollicitudin, bibendum felis non, ultricies sem. Phasellus eget enim vel ante interdum tempus. Pellentesque semper porta faucibus. Maecenas mi dolor, fermentum maximus felis ut, interdum posuere metus. Etiam congue dolor at mauris eleifend pharetra. Mauris pellentesque finibus urna id viverra.
-                </p>
-                <p class="mt2">
-                    In hac habitasse platea dictumst. Aliquam a nibh tristique, venenatis magna a, tincidunt justo. Quisque ut dignissim mauris. Sed varius placerat enim, id blandit magna commodo non. Sed nec nisi in ex posuere tristique. Donec et faucibus metus. Etiam non pulvinar ligula.</p>
-                </p>
-            </div>
-
-
-        </div> -->
-
-        <div class="row">
-            <div class="col-1-of-1 explorer-text-box">
-                <h2>INFORMACIÓN DE CENTROS Y ZONIFICACIÓN</h2>
-                <p>
-                    En el siguiente mapa se pueden ver las diferentes zonas y los colegios que corresponden a cada una.
-                </p>
-                <iframe id="dashboard" src="//tomellosotech.maps.arcgis.com/apps/Embed/index.html?webmap=1db22a3fd99b4f9dab2c9432cf0f1d2d&extent=-3.0484,39.1354,-2.9852,39.1667&zoom=true&previewImage=false&scale=true&basemap_toggle=true&alt_basemap=hybrid&disable_scroll=true&theme=light"></iframe>
-            </div>
+    <div class="row">
+        <div class="col-1-of-2">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat dui eget orci laoreet, eu bibendum erat aliquam. Ut et eros sollicitudin, bibendum felis non, ultricies sem. Phasellus eget enim vel ante interdum tempus. Pellentesque semper porta faucibus. Maecenas mi dolor, fermentum maximus felis ut, interdum posuere metus. Etiam congue dolor at mauris eleifend pharetra. Mauris pellentesque finibus urna id viverra.
+            </p>
+            <p class="mt2">
+                In hac habitasse platea dictumst. Aliquam a nibh tristique, venenatis magna a, tincidunt justo. Quisque ut dignissim mauris. Sed varius placerat enim, id blandit magna commodo non. Sed nec nisi in ex posuere tristique. Donec et faucibus metus. Etiam non pulvinar ligula.</p>
+            </p>
         </div>
 
-        <div class="row">
-            <h2>TODA LA INFORMACIÓN</h2>
-            <div class="col-1-of-1 explorer-text-box">
+
+    </div> -->
+
+    <h2>INFORMACIÓN DE CENTROS Y ZONIFICACIÓN</h2>
+    <div class="row">
+        <div class="col-1-of-1 explorer-text-box">
+            <p class="acenter">
+                Introduce tu dirección y comprueba qué colegios están en tu zona:
+            </p>
+            <form class="acenter" id="query-form">
+                <input type="text" id="address" placeholder="">
+                <input type="submit" value="Consultar">
+            </form>
+
+            <p id="info-center" class="acenter">
+
+            </p>
+            <script>
+                /* when including ArcGIS REST JS all exports are available
+                from the same arcgisRest global */
+                function processForm(e) {
+                    if (e.preventDefault) e.preventDefault();
+
+                    const apiKey = "AAPK24e42b66a3b54203a7a77df57d25822atOmmoxEQT_himZgqKMjLhMkagFjnZjooh9EPm6fACROkuVbnG9V3I7wGQRZRmJ4O";
+
+                    const authentication = new arcgisRest.ApiKey({
+                        key: apiKey
+                    });
+
+                    arcgisRest.geocode({
+                        address: document.getElementById("address").value,
+                        postal: 13700,
+                        city: "Tomelloso",
+                        countryCode: "ES",
+                        // searchExtent: "-3.1247949550328133,39.10051392185686,-2.901906068104559,39.22949157768225",
+                        authentication
+                    })
+                    .then((response) => {
+                        console.log("Candidates:", response.candidates);
+                        if(response.candidates[0].address == 13700){
+                            elem = document.getElementById("info-center")
+                            elem.classList.remove('success');
+                            elem.classList.add('error');
+                            document.getElementById("info-center").innerHTML = "Lo sentimos, no hemos sido capaces de encontrar tu dirección"
+                            return -1;
+                        }
+                        // Reload map
+                        var data = {
+                            'webmap':'1db22a3fd99b4f9dab2c9432cf0f1d2d',
+                            'zoom': true,
+                            'scale': true,
+                            'basemap_toggle' : true,
+                            'alt_basemap': 'hybrid',
+                            'disable_scroll': true,
+                            'theme': 'light',
+                        };
+
+                        var string_ = JSON.stringify(data);
+
+                        string_ = string_.replace(/{/g, "");
+                        string_ = string_.replace(/}/g, "");
+                        string_ = string_.replace(/:/g, "=")
+                        string_ = string_.replace(/,/g, "&");
+                        string_ = string_.replace(/"/g, "");
+
+                        const markerData = {
+                            description: 'Asegúrate de que el mapa haya ubicado correctamente tu dirección',
+                            url: 'https://tomellosotech.maps.arcgis.com/sharing/rest/content/items/587ee7c1f9fd41d297d8955e21bf113e/data',
+                            title: response.candidates[0].address
+                        }
+                        let marker = ''+
+                            `${response.candidates[0].location.x};`+
+                            `${response.candidates[0].location.y};`+
+                            `${response.candidates[0].location.spatialReference.wkid};`+
+                            `${encodeURIComponent(markerData.description)};`+
+                            `${encodeURIComponent(markerData.url)};`+
+                            `${encodeURIComponent(markerData.title)}`;
+
+                        // response.candidates[0].xmin ymin xmax ymax
+                        // string_+= `&center=${response.candidates[0].location.x},${response.candidates[0].location.y}`;
+                        string_ += '&extent=' +
+                            `${response.candidates[0].extent.xmin};` +
+                            `${response.candidates[0].extent.ymin};` +
+                            `${response.candidates[0].extent.xmax};` +
+                            `${response.candidates[0].extent.ymax}`;
+                        string_ += '&marker=' + marker;
+
+                        document.getElementById("dashboard").src = `//tomellosotech.maps.arcgis.com/apps/Embed/index.html?${string_}`
 
 
 
-            </div>
+                        // const queryGeometry = {
+                        //     x: -118.807,
+                        //     y: 34.002,
+                        //     spatialReference: {
+                        //         wkid: 4326
+                        //     }
+                        // };
 
-            <div class="col-3-of-4">
-                <p>
-                    En el portal de Educación de la Junta de Comunidades de Castilla la Mancha encontrarás
-                    información complementaria a la que hemos recogido en esta página como son:
-                </p>
-                <ul class="mt2" style="margin-left:4rem">
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/guias-proceso-admision-2-ciclo-educacion-infantil-primaria">Guías del proceso de admisión</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/calendario-proceso-admision-alumnado-curso-2021-2022-segund">Calendario del proceso de Admisión de Alumnado</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/video-tutorial-completar-solicitud-admision-papas-curso-202">Vídeo tutorial para completar la solicitud de admisión en Papás</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/informacion-consulta">Información de consulta acerca del proceso de admisión de alumnas</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/oferta-educativa-2-ciclo-infantil-primaria-bachillerato">Oferta educativa</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/normativa-admision">Normatica aplicable de manera específica a los centros de enseñanza</a></li>
-                    <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/preguntas-frecuentes-admision-2-ciclo-infantil-primaria-bac">Preguntas frecuences sobre el proceso de admisión</a></li>
-                </ul>
-                <p class="mt2">
-                    Para más información visita: <a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato">educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato</a>
-                </p>
-            </div>
-            <div class="col-1-of-4">
-                <div >
-                    <a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato">
-                        <img
-                        src="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato.ficheros/336049-thumb_cartel-admision-inf-prim-eso-2021-2022-clm0.53244339398276654839021458114721412.jpg?width=450&height=630&aspectRatio=true"
-                        style="width:100%"
+                        arcgisRest.queryFeatures({
+                            url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0",
+                            geometry: response.candidates[0].location,
+                            geometryType: "esriGeometryPoint",
+                            spatialRel: "esriSpatialRelIntersects",
+                            authentication
+                        })
+                        .then(response => {
+                            console.log(response.features);
+                            elem = document.getElementById("info-center")
+                            elem.classList.add('success');
+                            elem.classList.remove('error');
+                            document.getElementById("info-center").innerHTML = response.features[0].attributes.Puntos;
+                            // debugger
+                            // document.getElementById("result").textContent = JSON.stringify(response.features, null, 2);
+                        });
+                        // document.getElementById("result").textContent = JSON.stringify(response.candidates, null, 2);
+                    });
 
-                        frameborder="0"
-                        />
-                    </a>
+                    // You must return false to prevent the default form behavior
+                    return false;
+                }
 
-                  </div>
-            </div>
+                var form = document.getElementById('query-form');
+                if (form.attachEvent) {
+                    form.attachEvent("submit", processForm);
+                } else {
+                    form.addEventListener("submit", processForm);
+                }
 
 
-        </div>
 
-        <div class="row footer">
-            <div class="col-3-of-4">
-                <p>
-                    <strong>ORGANIZAN:</strong><br>
-                    Concejalía de Educación  del Ayuntamiento de Tomelloso en colaboración con Taller de Orientación de Zona Dirección General de Inclusión Educativa y Programas, de la Consejería de Educación de la JCCM.
+            </script>
 
-                </p>
-            </div>
-            <div class="col-1-of-4">
-                <strong>PÁGINA WEB:</strong> <br>
-                <a href="http://tomellosotech.org/"><img src="https://www.tomellosotech.org/wp-content/uploads/2019/09/logo-tomelloso-tech.svg" style="height:80px;padding-top:1rem"></a>
-                </a>
-            </div>
+            <p class="acenter">
+                En el siguiente mapa se pueden ver las diferentes zonas y los centros que corresponden a cada una:
+            </p>
+            <iframe id="dashboard" src="//tomellosotech.maps.arcgis.com/apps/Embed/index.html?webmap=1db22a3fd99b4f9dab2c9432cf0f1d2d&extent=-3.0484,39.1354,-2.9852,39.1667&zoom=true&previewImage=false&scale=true&basemap_toggle=true&alt_basemap=hybrid&disable_scroll=true&theme=light"></iframe>
         </div>
     </div>
 
+    <div class="row">
+        <h2>TODA LA INFORMACIÓN</h2>
+        <div class="col-1-of-1 explorer-text-box">
+
+
+
+        </div>
+
+        <div class="col-3-of-4">
+            <p>
+                En el portal de Educación de la Junta de Comunidades de Castilla la Mancha encontrarás
+                información complementaria a la que hemos recogido en esta página como son:
+            </p>
+            <ul class="mt2" style="margin-left:4rem">
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/guias-proceso-admision-2-ciclo-educacion-infantil-primaria">Guías del proceso de admisión</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/calendario-proceso-admision-alumnado-curso-2021-2022-segund">Calendario del proceso de Admisión de Alumnado</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/video-tutorial-completar-solicitud-admision-papas-curso-202">Vídeo tutorial para completar la solicitud de admisión en Papás</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/informacion-consulta">Información de consulta acerca del proceso de admisión de alumnas</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/oferta-educativa-2-ciclo-infantil-primaria-bachillerato">Oferta educativa</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/normativa-admision">Normatica aplicable de manera específica a los centros de enseñanza</a></li>
+                <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/preguntas-frecuentes-admision-2-ciclo-infantil-primaria-bac">Preguntas frecuences sobre el proceso de admisión</a></li>
+            </ul>
+            <p class="mt2">
+                Para más información visita: <a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato">educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato</a>
+            </p>
+        </div>
+        <div class="col-1-of-4">
+            <div >
+                <a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato">
+                    <img
+                    src="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato.ficheros/336049-thumb_cartel-admision-inf-prim-eso-2021-2022-clm0.53244339398276654839021458114721412.jpg?width=450&height=630&aspectRatio=true"
+                    style="width:100%"
+
+                    frameborder="0"
+                    />
+                </a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row footer">
+        <div class="col-3-of-4">
+            <p>
+                <strong>ORGANIZAN:</strong><br>
+                Concejalía de Educación  del Ayuntamiento de Tomelloso en colaboración con Taller de Orientación de Zona Dirección General de Inclusión Educativa y Programas, de la Consejería de Educación de la JCCM.
+
+            </p>
+        </div>
+        <div class="col-1-of-4">
+            <strong>PÁGINA WEB:</strong> <br>
+            <a href="https://www.tomellosotech.org/iniciativas/nueva-colaboracion-con-el-ayuntamiento-de-tomelloso-en-el-proceso-de-admision-del-curso-2021-22/"><img src="https://www.tomellosotech.org/wp-content/uploads/2019/09/logo-tomelloso-tech.svg" style="height:80px;padding-top:1rem"></a>
+        </a>
+    </div>
+</div>
+</div>
+
 </body>
 </html>
+
