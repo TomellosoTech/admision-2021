@@ -74,7 +74,7 @@
 
     <div class="container">
         <h2>INFORMACIÓN DEL PROCESO</h2>
-        <div class="row" style="margin-bottom: 1rem;">
+        <div class="row">
 
             <div class="col-1-of-2">
                 <!-- <h3>Charla informativa</h3> -->
@@ -110,7 +110,10 @@
         </div>
 
     <div class="row">
-
+        <h2>DUDAS E INFORMACIÓN POR CENTRO</h2>
+        <div class="explorer-text-box">
+            <p class="acenter">Por favor para dudas específicas sobre el proceso de admisión contactar con el centro de primera opción:</p>
+        </div>
         <div class="col-1-of-2">
             <h3>ACCESO A 2º Ciclo de E. Infantil. Y PRIMARIA</h3>
             <div style="--aspect-ratio: 16/9;">
@@ -174,14 +177,14 @@
     <div class="row">
         <div class="col-1-of-1 explorer-text-box">
             <p class="acenter">
-                Introduce tu dirección y comprueba qué colegios están en tu zona:
+                Introduce tu dirección y comprueba qué <strong>centros de Infantil y Primaria</strong> están en tu zona:
             </p>
             <form class="acenter" id="query-form">
                 <input type="text" id="address" placeholder="">
                 <input type="submit" value="Consultar">
             </form>
 
-            <p id="info-center" class="acenter"></p>
+            <p id="info-center" class=""></p>
 
             <script>
                 function processForm(e) {
@@ -264,7 +267,11 @@
                             elem = document.getElementById("info-center")
                             elem.classList.add('success');
                             elem.classList.remove('error');
-                            document.getElementById("info-center").innerHTML = response.features[0].attributes.Puntos;
+                            document.getElementById("info-center").innerHTML = `
+                            Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, por favor revisa en el mapa que la hemos ubicado correctamente.<br> Los centros de Infantil y Primaria que se encuentran en esta zona son: <br>
+                                ${response.features[0].attributes.Puntos}
+                            `;
+                            //Tu calle está ubicada en la Zona 1, y los centros de Infantil y Primaria que se encuentran en esta zona son: C.E.I.P. José Antonio y C.E.I.P. José María del Moral.
                         });
                     });
 
@@ -297,7 +304,7 @@
         <div class="col-3-of-4">
             <p>
                 En el portal de Educación de la Junta de Comunidades de Castilla la Mancha encontrarás
-                información complementaria a la que hemos recogido en esta página como son:
+                información complementaria a la que hemos recogido en esta página, como son:
             </p>
             <ul class="mt2" style="margin-left:4rem">
                 <li><a href="http://www.educa.jccm.es/es/admision/admision-2-ciclo-infantil-primaria-bachillerato/guias-proceso-admision-2-ciclo-educacion-infantil-primaria">Guías del proceso de admisión</a></li>
@@ -340,6 +347,7 @@
         <div class="col-1-of-4">
             <strong>PÁGINA WEB:</strong> <br>
             <a href="https://www.tomellosotech.org/iniciativas/nueva-colaboracion-con-el-ayuntamiento-de-tomelloso-en-el-proceso-de-admision-del-curso-2021-22/"><img src="https://www.tomellosotech.org/wp-content/uploads/2019/09/logo-tomelloso-tech.svg" style="height:80px;padding-top:1rem"></a>
+            <p><a href="https://www.tomellosotech.org/contacto/" style="margin-top: 1rem; display: inline-block; font-size: 1.3rem;">Incidencias con la web</a></p>
         </a>
     </div>
 </div>
