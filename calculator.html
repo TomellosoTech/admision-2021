@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estimador</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <h2>Estimador de Puntos</h2>
+      <div class="disclaimer">
+        <p class="disclaimer__icon">Icono danger</p>
+        <p class="disclaimer__text">
+          Esta calculadora de puntos es una "estimación aproximada y no oficial"
+          y nunca deberán ser tenidos en cuenta como tal. El objetivo es dar una
+          estimación orientativa en base a algunos de los criterios de admision
+          del alumnado serán valorados de acuerdo con el baremo publicado por la
+          JCCM
+        </p>
+      </div>
+      <form id="calculator-form">
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">
+              ¿Qué tipo de domicilio ha introducido previamente?
+            </h4>
+            <p class="calculator-item__enunciated">
+              El cálculo se hará teniendo en cuenta que el domicilio se
+              encuentra en "[Domicilio de la caja de búsqueda]". Si desea que
+              sea otro por favor vuelva a introducirlo.
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="tipo_domicilio">
+              <option value="familiar">Familiar</option>
+              <option value="laboral">Laboral</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Familiares</h4>
+            <p class="calculator-item__enunciated">
+              ¿El alumno o alumna tiene HERMANOS ESCOLARIZADOS o PADRES o
+              TUTORES que trabajan en alguno de los centros que solicita?
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="escolarizados">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <!-- Aqui ira la relacion de los centros -->
+        <fieldset class="calculator-group">
+          <legend class="calculator-group__title">
+            Detalle de escolarización de familiares
+          </legend>
+          <div class="calculator-group__item">
+            <p class="calculator-group__label">Seleccione el/los centro(s)</p>
+            <select class="calculator-group__option" name="centro_w_Familiar">
+              <option value="eladio">Eladio Cabañero</option>
+              <option value="isidro">San Isidro</option>
+            </select>
+          </div>
+          <div class="calculator-group__item">
+            <p class="calculator-group__label" id="familiar_center">
+              Eladio Cabañero
+            </p>
+            <select class="calculator-group__option" name="centro_w_Familiar">
+              <option value="hermanos">Hermanos</option>
+              <option value="padres">Padres</option>
+              <option value="ambos">Ambos</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Discapacidad</h4>
+            <p class="calculator-item__enunciated">
+              El alumno o alumna, o alguno de sus padres o tutores legales, o
+              alguno de sus hermanos o hermanas, tienen reconocido mediante
+              dictamen emitido por el Organismo público competente un grado de
+              DISCAPACIDAD igual o superior al 33%
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="discapacidad">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Familia Numerosa</h4>
+            <p class="calculator-item__enunciated">
+              Que la unidad familiar tiene condición legal de FAMILIA NUMEROSA
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="fam_numerosa">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Familia Monoparental</h4>
+            <p class="calculator-item__enunciated">
+              Que la unidad familiar tiene condición legal de FAMILIA
+              MONOPARENTAL
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="fam_monoparental">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">parto Múltiple</h4>
+            <p class="calculator-item__enunciated">
+              Que el alumno o alumna nació en un parto múltiple
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="parto_multiple">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Acogimiento Familiar</h4>
+            <p class="calculator-item__enunciated">
+              Que el alumno o alumna, se encuentra en SITUACIÓN DE ACOGIMIENTO
+              FAMILIAR
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="acogimiento">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator-item">
+          <div class="calculator-item__text">
+            <h4 class="calculator-item__question">Víctima de género</h4>
+            <p class="calculator-item__enunciated">
+              Que la unidad familiar tiene condición legal de víctima de
+              violencia de género o de terrorismo
+            </p>
+          </div>
+          <div class="calculator-item__element">
+            <select name="vic_genero">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Calcular</button>
+      </form>
+
+      <div class="results">
+        <h3>Resultados</h3>
+        <p>
+          Los puntos estimados correspondientes a cada centro
+          <span class="remark">
+            tener en cuenta los criterios de renta per cápita y expediente
+            académico*
+          </span>
+          son:
+        </p>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Centro</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Eladio Cabañeros</td>
+              <td>34</td>
+            </tr>
+            <tr>
+              <td>San Isidro</td>
+              <td>44</td>
+            </tr>
+            <tr>
+              <td>Cabañeros Eldio</td>
+              <td>64</td>
+            </tr>
+            <tr>
+              <td>San Juan</td>
+              <td>47</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
