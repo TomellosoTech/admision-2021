@@ -255,8 +255,7 @@
             <div class="col-1-of-1 explorer-text-box">
                 <p class="acenter">
                     Introduce una dirección y comprueba qué <strong>centros de Infantil y Primaria</strong> corresponden
-                    a esa
-                    zona:
+                    a esa zona:
                 </p>
                 <form class="acenter"
                       id="query-form">
@@ -411,11 +410,11 @@
                                         getBorderingSchools().then(borderingSchools => {
                                             const borderingSchoolsStr = borderingSchools.reduce((previousValue, currentValue) => {
                                                 if (previousValue.attributes) {
-                                                    previousValue = previousValue.attributes.Nombre
+                                                    previousValue = "<br> &bull; " + previousValue.attributes.Nombre
                                                 }
-                                                return previousValue += `, ${currentValue.attributes.Nombre}`;
+                                                return previousValue += `<br> &bull; ${currentValue.attributes.Nombre}`;
                                             });
-                                            document.getElementById("info-center").innerHTML = `Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, por favor revisa en el mapa que la hemos ubicado correctamente.<br> Los centros de Infantil y Primaria que se encuentran en esta zona son: <br>${response.features[0].attributes.Puntos}<br>Y los limítrofes: ${borderingSchoolsStr}.`;
+                                            document.getElementById("info-center").innerHTML = `Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, por favor revisa en el mapa que la hemos ubicado correctamente.<br><br>Los centros de Infantil y Primaria que se encuentran en esta zona son: <br>${response.features[0].attributes.Puntos}<br><br>Y los de las zonas limítrofes son: ${borderingSchoolsStr}.`;
                                         })
 
                                     });
