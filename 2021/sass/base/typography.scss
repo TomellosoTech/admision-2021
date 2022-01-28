@@ -1,0 +1,36 @@
+body{
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    line-height: 1.7;
+}
+
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase;
+
+    /*Hack to fix shacking animation*/
+    backface-visibility: hidden;
+}
+
+.heading-primary-main{
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+
+    @include respond(phone) {
+        font-size: 2rem;
+    }
+}
+
+
+.heading-primary-sub{
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing:2.11rem;
+    animation: moveInRight 1s ease-out;
+    @include respond(phone) {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        letter-spacing:1rem;
+    }
+}

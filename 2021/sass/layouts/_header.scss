@@ -1,0 +1,60 @@
+.header{
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary, 0.8)
+        ),
+    url("https://images.unsplash.com/photo-1588075592405-d3d4f0846961?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80");
+
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
+    /* Clippings https://bennettfeely.com/clippy/  */
+    position: relative;
+
+    .logo-box{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+
+        @include respond(phone) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+      }
+
+      .logo{
+        height: 85px;
+      }
+
+      .text-box{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include respond(phone) {
+            top: 45%
+        }
+      }
+}
+
+.heading-primary-main{
+    display: block;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+
+
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3
+    */
+  }
+
+.heading-primary-sub{
+    display: block;
+    animation: moveInRight 1s ease-out;
+}
