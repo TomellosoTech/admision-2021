@@ -347,8 +347,7 @@
                                     url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0",
                                     geometry: response.candidates[0].location,
                                     geometryType: "esriGeometryPoint",
-                                    spatialRel: "esriSpatialRelIntersects",
-                                    authentication
+                                    spatialRel: "esriSpatialRelIntersects"
                                 })
                                     .then(response => {
                                         console.log(response.features);
@@ -458,8 +457,7 @@
 
 
                     arcgisRest.queryFeatures({
-                        url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0",
-                        authentication
+                        url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0"
                     })
                         .then(response => {
                             allZones = response.features;
@@ -469,8 +467,7 @@
                     arcgisRest.queryFeatures({
                         url: "https://services.arcgis.com/Q6ZFRRvMTlsTTFuP/ArcGIS/rest/services/Colegios_Tomelloso_2/FeatureServer/0",
                         where: "Clasificacion = 'Infantil y Primaria'",
-                        outSR: 25830,
-                        authentication
+                        outSR: 25830
                     })
                         .then(response => {
                             allSchools = response.features;
