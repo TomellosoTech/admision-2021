@@ -5,6 +5,55 @@ const authentication = new arcgisRest.ApiKey({
     key: apiKey
 });
 
+function getBorderingZones(addressZone) {
+  return new Promise(resolve => {
+      allZones.forEach(async function (zone, i) {
+          zone.spatialReference = {
+              "wkid": 4326
+          }
+          const isBordering = await intersects(addressZone.geometry, zone.geometry);
+          if (isBordering === true) {
+            // debugger
+              if (addressZone.attributes.Nombre != zone.attributes.Nombre) {
+                  bordering.push(zone)
+              }
+          }
+          if (i === allZones.length - 1) {
+              // console.log("Terminamos y devolvemos promesa getBorderingZones()")
+              resolve(bordering);
+          }
+      });
+  });
+}
+
+function getBorderingSchools(addressZone) {
+  return new Promise(resolve => {
+      getBorderingZones(addressZone).then(borderingZones => {
+          bordering = [];
+          borderingZones.forEach((zone, i) => {
+              allSchools.forEach(async function (school, j) {
+                  school.geometry.spatialReference = zone.geometry.spatialReference = {
+                      "wkid": 4326
+                  };
+                  const isBordering = await intersects(school.geometry, zone.geometry);
+                  if (isBordering === true) {
+                      // console.log(`${zone.attributes.Nombre} si intersecta con ${school.attributes.Nombre} `)
+                      bordering.push(school);
+                      
+                  } else {
+                      // console.log(`${zone.attributes.Nombre} no intersecta con ${school.attributes.Nombre} `)
+                  }
+
+                  if (i === borderingZones.length - 1 && j === allSchools.length - 1) {
+                      resolve(bordering);
+                  }
+              });
+          });
+      });
+
+  });
+}
+
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
@@ -72,7 +121,8 @@ function processForm(e) {
                 url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0",
                 geometry: response.candidates[0].location,
                 geometryType: "esriGeometryPoint",
-                spatialRel: "esriSpatialRelIntersects"
+                spatialRel: "esriSpatialRelIntersects",
+                outSR: 4326
             })
                 .then(response => {
                     console.log(response.features);
@@ -83,57 +133,10 @@ function processForm(e) {
 
                     const addressZone = response.features[0];
                     addressZone.geometry.spatialReference = {
-                        "wkid": 25830
+                        "wkid": 4326
                     };
-
-                    function getBorderingZones() {
-                        return new Promise(resolve => {
-                            allZones.forEach(async function (zone, i) {
-                                zone.spatialReference = {
-                                    "wkid": 25830
-                                }
-                                const isBordering = await intersects(addressZone.geometry, zone.geometry);
-                                if (isBordering === true) {
-                                    if (response.features[0].attributes.Nombre != zone.attributes.Nombre) {
-                                        bordering.push(zone)
-                                    }
-                                }
-                                if (i === allZones.length - 1) {
-                                    // console.log("Terminamos y devolvemos promesa getBorderingZones()")
-                                    resolve(bordering);
-                                }
-                            });
-                        });
-                    }
-
-                    function getBorderingSchools() {
-                        return new Promise(resolve => {
-                            getBorderingZones().then(borderingZones => {
-                                bordering = [];
-                                borderingZones.forEach((zone, i) => {
-                                    allSchools.forEach(async function (school, j) {
-                                        school.geometry.spatialReference = zone.geometry.spatialReference = {
-                                            "wkid": 25830
-                                        };
-                                        const isBordering = await intersects(school.geometry, zone.geometry);
-                                        if (isBordering === true) {
-                                            // console.log(`${zone.attributes.Nombre} si intersecta con ${school.attributes.Nombre} `)
-                                            bordering.push(school)
-                                        } else {
-                                            // console.log(`${zone.attributes.Nombre} no intersecta con ${school.attributes.Nombre} `)
-                                        }
-
-                                        if (i === borderingZones.length - 1 && j === allSchools.length - 1) {
-                                            resolve(bordering);
-                                        }
-                                    });
-                                });
-                            });
-
-                        });
-                    }
-
-                    getBorderingSchools().then(borderingSchools => {
+                    
+                    getBorderingSchools(addressZone).then(borderingSchools => {
                         const borderingSchoolsStr = borderingSchools.reduce((previousValue, currentValue) => {
                             if (previousValue.attributes) {
                                 previousValue = "<br> &bull; " + previousValue.attributes.Nombre
@@ -141,7 +144,22 @@ function processForm(e) {
                             return previousValue += `<br> &bull; ${currentValue.attributes.Nombre}`;
                         });
                         document.getElementById("info-center").innerHTML = `Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, por favor revisa en el mapa que la hemos ubicado correctamente.<br><br>Los centros de Infantil y Primaria que se encuentran en esta zona son: <br>${response.features[0].attributes.Puntos}<br><br>Y los de las zonas limítrofes son: ${borderingSchoolsStr}.`;
-                    })
+                    });
+
+                    console.log("addressZone.geometry=",addressZone.geometry)
+                    // Get schools in my zone
+                    arcgisRest.queryFeatures({
+                      url: "https://services.arcgis.com/Q6ZFRRvMTlsTTFuP/arcgis/rest/services/Colegios_Tomelloso_2/FeatureServer/0",
+                      geometry: addressZone.geometry,
+                      geometryType: "esriGeometryPolygon",
+                      spatialRel: "esriSpatialRelIntersects",
+                      where: "Clasificacion = 'Infantil y Primaria'",
+                      inSR: "4326",
+                      outSR: "4326",
+                      maxUrlLength: 100
+                    }).then(response => {
+                      response.features.forEach(el => schools.push(el));
+                    });
 
                 });
         });
@@ -175,7 +193,8 @@ function processForm(e) {
 function MainMap() {
 
   arcgisRest.queryFeatures({
-    url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0"
+    url: "https://services7.arcgis.com/d9R4ThD32qsG1Wu4/ArcGIS/rest/services/ZonasEscolares/FeatureServer/0",
+    outSR: 4326
   }).then(response => {
       // Fill global variable with all zones
       allZones = response.features;
@@ -186,7 +205,7 @@ function MainMap() {
       url: "https://services.arcgis.com/Q6ZFRRvMTlsTTFuP/ArcGIS/rest/services/Colegios_Tomelloso_2/FeatureServer/0",
       where: "Clasificacion = 'Infantil y Primaria'",
       orderByFields: "Nombre",
-      outSR: 25830
+      outSR: 4326
   }).then(response => {
       // Fill global variable with all schools
       allSchools = response.features;

@@ -19,11 +19,55 @@ function calculatePoints(event) {
     }
 
     const pointsPerSchool = calculatePointsPerSchool(inputValues);
-    console.table(pointsPerSchool)
+    const sortedSchools = sortDict(pointsPerSchool);
 
-    console.log(`Values: `, inputValues);
+    const tbodyEl = document.querySelector('.results-table tbody');
+    tbodyEl.innerHTML = '';
+    sortedSchools.forEach(el => {
+        const trEl = document.createElement("tr");
+        const obj = allSchools.find(school => slugify(school.attributes.Nombre) === el);
+        let note = "";
+        if (obj.attributes.OBJECTID === 3){
+            note = "<sup>1</sup>";
+        }
+        trEl.innerHTML = `
+            <td>${obj.attributes.Nombre}${note}</td>
+            <td>${pointsPerSchool[el]}</td>
+        `;
+        tbodyEl.appendChild(trEl);
+    })
+    
+    // console.log(`Values: `, inputValues);
     event.preventDefault();
 }
+
+function removeSchool(distantSchools, objectId){
+    const filtered = distantSchools.filter(function( obj ) {
+        return obj.attributes.OBJECTID !== objectId;
+    });
+    return filtered;
+}
+
+function sortDict( dict ) {
+    // Step - 1
+    // Create the array of key-value pairs
+    var items = Object.keys(dict).map(
+        (key) => { return [key, dict[key]] });
+    
+    // Step - 2
+    // Sort the array based on the second element (i.e. the value)
+    items.sort(
+        (first, second) => { return second[1] - first[1] }
+    );
+    
+    // Step - 3
+    // Obtain the list of keys in sorted order of the values.
+    var keys = items.map(
+        (e) => { return e[0] });
+    
+    return keys;
+}
+
 
 function calculatePointsPerSchool(inputValues){
     const pointsPerSchool = {};
@@ -61,7 +105,7 @@ function calculatePointsPerSchool(inputValues){
             pointsPer["largeFamily"] = 1;
             break;
     }
-
+    
     let defaultPoints = 0;
     for (const [key, value] of Object.entries(pointsPer)) {
         // console.log(key, value);
@@ -69,11 +113,58 @@ function calculatePointsPerSchool(inputValues){
         defaultPoints += value;
     }
     
-
     allSchools.forEach(elem => {
         const centerName = slugify(elem.attributes.Nombre);
         pointsPerSchool[centerName] = defaultPoints;
     });
+
+    let distantSchools = JSON.parse(JSON.stringify(allSchools))
+    // Increase points to schools in zone or intered location
+    schools.forEach(elem => {
+        let points = 8;
+        if(elem.attributes.OBJECTID === 3 || inputValues["tipo_domicilio"].value === "familiar"){
+            // If Milagrosa or familiar +10 points
+            points = 10;
+        }
+        distantSchools = removeSchool(distantSchools, elem.attributes.OBJECTID);
+        pointsPerSchool[slugify(elem.attributes.Nombre)] += points;
+    });
+    
+
+    // Increase points to schools in zone or intered location
+    bordering.forEach(elem => {
+        let points = 5;
+        if(elem.attributes.OBJECTID === 3){
+            // If Milagrosa or familiar +10 points
+            points = 10;
+        }
+        distantSchools = removeSchool(distantSchools, elem.attributes.OBJECTID);
+        pointsPerSchool[slugify(elem.attributes.Nombre)] += points;
+    });
+
+    // Increase points to other schools (+3)
+    distantSchools.forEach(elem => {
+        let points = 3;
+        if(elem.attributes.OBJECTID === 3){
+            points = 10;
+        }
+        pointsPerSchool[slugify(elem.attributes.Nombre)] += 3;
+    });
+
+    // Increase points to schools with brothers or parents
+    if(inputValues["escolarizados"]){
+        inputValues["escolarizados"].forEach(elem => {
+            switch(elem.value){
+                case "hermanos": 
+                case "ambos": 
+                    pointsPerSchool[elem.dataset.slug] += 10;
+                    break;
+                case "padres": 
+                    pointsPerSchool[elem.dataset.slug] += 8;
+            }
+        });
+    }
+
     return pointsPerSchool;
 }
 
