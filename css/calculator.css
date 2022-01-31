@@ -1,3 +1,32 @@
 .calculator {
-  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+}
+.disclaimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.disclaimer__icon {
+  width: 20%;
+}
+
+.disclaimer__icon img {
+  width: 100%;
+}
+/* background-color: #c7a56a;*/
+
+/*Media en px son 600px para rows 900px*/
+@media only screen and (min-width: 37.5em) {
+  .calculator {
+  }
+
+  .disclaimer {
+    flex-direction: row;
+  }
+  .disclaimer__icon {
+    width: 40%;
+    margin-right: 0.3em;
+  }
 }
