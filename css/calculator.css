@@ -1,3 +1,11 @@
+:root {
+  --background-color: #c7a56a;
+  --glass: rgba(255, 255, 255, 0.2);
+  --glass-icon: rgba(255, 255, 255, 0.3);
+  --gradient: linear-gradient(35deg, red, purple);
+  --option: #c7a56a;
+}
+
 .calculator {
   display: flex;
   flex-direction: column;
@@ -15,7 +23,45 @@
 .disclaimer__icon img {
   width: 100%;
 }
-/* background-color: #c7a56a;*/
+.calculator-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* <select> styles */
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 20em;
+  height: 3em;
+  padding: 0 4em 0 1em;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+      no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--background-color) 3em, var(--glass) 3em);
+  color: black;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+/* <option> colors */
+option {
+  color: inherit;
+  background-color: var(--option);
+}
+/* Remove focus outline */
+option:focus {
+  outline: none;
+}
+/* Remove IE arrow */
+option::-ms-expand {
+  display: none;
+}
 
 /*Media en px son 600px para rows 900px*/
 @media only screen and (min-width: 37.5em) {
@@ -28,5 +74,11 @@
   .disclaimer__icon {
     width: 40%;
     margin-right: 0.3em;
+  }
+
+  .calculator-item {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1em 0em;
   }
 }
