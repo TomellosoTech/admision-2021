@@ -109,7 +109,7 @@ function processForm(e) {
                     function getBorderingSchools() {
                         return new Promise(resolve => {
                             getBorderingZones().then(borderingZones => {
-                                let bordering = [];
+                                bordering = [];
                                 borderingZones.forEach((zone, i) => {
                                     allSchools.forEach(async function (school, j) {
                                         school.geometry.spatialReference = zone.geometry.spatialReference = {

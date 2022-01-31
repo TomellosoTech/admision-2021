@@ -7,8 +7,6 @@ function calculatePoints(event) {
         'parto_multiple',
         'acogimiento',
         'vic_genero'
-        // 'escolarizados',
-        // 'centro_w_Familiar'
     ];
     let inputValues = {};
     
@@ -19,9 +17,64 @@ function calculatePoints(event) {
     if(document.querySelector(`[name="escolarizados"]`).value === "si"){
         inputValues["escolarizados"] = document.querySelectorAll(`[name^="centro_familiar_"]`);
     }
-    
+
+    const pointsPerSchool = calculatePointsPerSchool(inputValues);
+    console.table(pointsPerSchool)
+
     console.log(`Values: `, inputValues);
     event.preventDefault();
+}
+
+function calculatePointsPerSchool(inputValues){
+    const pointsPerSchool = {};
+    
+    let pointsPer ={
+        singleParent: inputValues["fam_monoparental"].value === "si"? 2: 0,
+        multipleBirth: inputValues["parto_multiple"].value === "si"? 2: 0,
+        fosterCare: inputValues["acogimiento"].value === "si"? 2: 0,
+        genderVictim: inputValues["vic_genero"].value === "si"? 2: 0
+    };
+    
+    switch(inputValues["discapacidad"].value){
+        case "no":
+            pointsPer["disability"] = 0;
+            break;
+        case "alumno":
+            pointsPer["disability"] = 3;
+            break;
+        case "padres":
+            pointsPer["disability"] = 2;
+            break;
+        case "hermano":
+            pointsPer["disability"] = 1;
+            break;
+    }
+
+    switch(inputValues["fam_numerosa"].value){
+        case "no":
+            pointsPer["largeFamily"] = 0;
+            break;
+        case "especial":
+            pointsPer["largeFamily"] = 2;
+            break;
+        case "general":
+            pointsPer["largeFamily"] = 1;
+            break;
+    }
+
+    let defaultPoints = 0;
+    for (const [key, value] of Object.entries(pointsPer)) {
+        // console.log(key, value);
+        //location: inputValues["tipo_domicilio"].value === "familiar"? 10: 8,
+        defaultPoints += value;
+    }
+    
+
+    allSchools.forEach(elem => {
+        const centerName = slugify(elem.attributes.Nombre);
+        pointsPerSchool[centerName] = defaultPoints;
+    });
+    return pointsPerSchool;
 }
 
 function toggleAddSchoolBtn(){
@@ -102,8 +155,6 @@ function removeSchoolField(event){
     document.getElementById(`family_related_center_${index}`).remove();
     event.preventDefault();
 }
-
-
 
 function oneLineTag(tag,options){
     return Object.assign(document.createElement(tag),options);

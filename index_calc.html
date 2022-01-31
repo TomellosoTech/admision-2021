@@ -277,8 +277,234 @@
                            value="Consultar">
                 </form>
 
-                <p id="info-center"
-                   class=""></p>
+                <p id="info-center"class=""></p>
+
+                <!-- 
+                    
+                    START CALCULATOR 
+                
+                -->
+
+                <div class="calculator">
+                    <h2>Estimador de Puntos</h2>
+                    <div class="disclaimer">
+                      <p class="disclaimer__icon"><img src="images/Blinking_warning.gif" width="16"></p>
+                      <p class="disclaimer__text">
+                        Esta calculadora de puntos es una <strong>"estimación aproximada y no oficial"</strong>
+                        y nunca deberán ser tenidos en cuenta como tal. El objetivo es dar una
+                        estimación orientativa en base a algunos de los criterios de admisión
+                        del alumnado serán valorados de acuerdo con el baremo publicado por la
+                        JCCM.
+                      </p>
+                    </div>
+                    <form id="calculator-form">
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">
+                            ¿Qué tipo de domicilio ha introducido previamente?
+                          </h4>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="tipo_domicilio">
+                            <option value="familiar">Familiar</option>
+                            <option value="laboral">Laboral</option>
+                          </select>
+                        </div>
+                        <div class="calculator-item__text">
+                          <p class="calculator-item__enunciated">
+                            <em><strong>Nota</strong>: El cálculo se hará teniendo en cuenta que el domicilio se
+                            encuentra en "[Domicilio de la caja de búsqueda]". Si desea que
+                            sea otro, por favor vuelva a introducirlo.</em>
+                          </p>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Familiares</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿El alumno o alumna tiene HERMANOS ESCOLARIZADOS, PADRES o
+                            TUTORES trabajando en alguno de los centros que solicita?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="escolarizados" id="linked-to-school">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- Aqui ira la relacion de los centros -->
+                      <fieldset class="calculator-group" style="display:none">
+                        <legend class="calculator-group__title">
+                          Detalle de escolarización de familiares
+                        </legend>
+                        <div class="calculator-group__item">
+                          <p class="calculator-group__label">
+                            Seleccione el/los centro(s) e indique si el alumno o alumna 
+                            tiene en el centro: hermanos matriculados o padres trabajando 
+                            (o ambas cosas).
+                          </p>
+                          <select class="calculator-group__option" name="centros">
+                            <!-- <option value="eladio">Eladio Cabañero</option>
+                            <option value="isidro">San Isidro</option> -->
+                          </select>
+                          <button id="add-school">
+                            Añadir
+                          </button>
+                        </div>
+                        <div class="calculator-group__set">
+                          
+                        </div>
+                        </fieldset>
+                        
+                      </fieldset>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Discapacidad</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿El alumno o alumna, o alguno de sus padres o tutores legales, o
+                            alguno de sus hermanos o hermanas, tienen reconocido mediante
+                            dictamen emitido por el Organismo público competente un grado de
+                            DISCAPACIDAD igual o superior al 33%?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="discapacidad">
+                            <option value="no">No</option>
+                            <option value="alumno">Sí, el alumno o alumna solicitante</option>
+                            <option value="padres">Sí, alguno de sus padres o tutores legales del alumno o alumna solicitante</option>
+                            <option value="hermano">Sí, alguno de los hermanos o hermanas del alumno o alumna solicitante</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Familia Numerosa</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿Tiene la unidad familiar condición legal de FAMILIA NUMEROSA?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="fam_numerosa">
+                            <option value="no">No</option>
+                            <option value="especial">Sí, categoría especial</option>
+                            <option value="general">Sí, categoría general</option>
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Familia Monoparental</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿Tiene la unidad familiar legal de FAMILIA MONOPARENTAL?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="fam_monoparental">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Parto Múltiple</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿El alumno o alumna nació en un parto múltiple?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="parto_multiple">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Acogimiento Familiar</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿El alumno o alumna, se encuentra en SITUACIÓN DE ACOGIMIENTO
+                            FAMILIAR?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="acogimiento">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="calculator-item">
+                        <div class="calculator-item__text">
+                          <h4 class="calculator-item__question">Víctima de género</h4>
+                          <p class="calculator-item__enunciated">
+                            ¿Tiene la unidad familiar condición legal de víctima de
+                            violencia de género o de terrorismo?
+                          </p>
+                        </div>
+                        <div class="calculator-item__element">
+                          <select name="vic_genero">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button type="submit">Calcular</button>
+                    </form>
+              
+                    <div class="results">
+                      <h3>Resultados</h3>
+                      <p>
+                        Los puntos estimados correspondientes a cada centro
+                        <span class="remark">
+                          tener en cuenta los criterios de renta per cápita y expediente
+                          académico*
+                        </span>
+                        son:
+                      </p>
+                      <table class="results-table">
+                        <thead>
+                          <tr>
+                            <th>Centro</th>
+                            <th>Puntos</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Eladio Cabañeros</td>
+                            <td>34</td>
+                          </tr>
+                          <tr>
+                            <td>San Isidro</td>
+                            <td>44</td>
+                          </tr>
+                          <tr>
+                            <td>Cabañeros Eldio</td>
+                            <td>64</td>
+                          </tr>
+                          <tr>
+                            <td>San Juan</td>
+                            <td>47</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                <!-- 
+                    
+                    END CALCULATOR 
+                
+                -->
 
                 <p class="acenter" style="font-size: 1.3rem;">
                     El siguiente mapa ha sido generado a partir del 
@@ -398,9 +624,10 @@
     <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer@3.0.0/dist/umd/feature-layer.umd.js"></script>
     <script>
-        let allZones = null, allSchools = [], bordering;
+        let allZones = null, allSchools = [], bordering = [];
     </script>
     <script type="module" src="js/map.js"></script>
+    <script src="js/calculator-app.js" type="module"></script>
 </body>
 
 </html>
