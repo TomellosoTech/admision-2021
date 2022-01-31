@@ -11,13 +11,13 @@
     <div class="calculator">
       <h2>Estimador de Puntos</h2>
       <div class="disclaimer">
-        <p class="disclaimer__icon">Icono danger</p>
+        <p class="disclaimer__icon"><img src="images/Blinking_warning.gif" width="16"></p>
         <p class="disclaimer__text">
-          Esta calculadora de puntos es una "estimación aproximada y no oficial"
+          Esta calculadora de puntos es una <strong>"estimación aproximada y no oficial"</strong>
           y nunca deberán ser tenidos en cuenta como tal. El objetivo es dar una
-          estimación orientativa en base a algunos de los criterios de admision
+          estimación orientativa en base a algunos de los criterios de admisión
           del alumnado serán valorados de acuerdo con el baremo publicado por la
-          JCCM
+          JCCM.
         </p>
       </div>
       <form id="calculator-form">
@@ -26,11 +26,6 @@
             <h4 class="calculator-item__question">
               ¿Qué tipo de domicilio ha introducido previamente?
             </h4>
-            <p class="calculator-item__enunciated">
-              El cálculo se hará teniendo en cuenta que el domicilio se
-              encuentra en "[Domicilio de la caja de búsqueda]". Si desea que
-              sea otro por favor vuelva a introducirlo.
-            </p>
           </div>
           <div class="calculator-item__element">
             <select name="tipo_domicilio">
@@ -38,61 +33,70 @@
               <option value="laboral">Laboral</option>
             </select>
           </div>
+          <div class="calculator-item__text">
+            <p class="calculator-item__enunciated">
+              <em><strong>Nota</strong>: El cálculo se hará teniendo en cuenta que el domicilio se
+              encuentra en "[Domicilio de la caja de búsqueda]". Si desea que
+              sea otro, por favor vuelva a introducirlo.</em>
+            </p>
+          </div>
         </div>
 
         <div class="calculator-item">
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Familiares</h4>
             <p class="calculator-item__enunciated">
-              ¿El alumno o alumna tiene HERMANOS ESCOLARIZADOS o PADRES o
-              TUTORES que trabajan en alguno de los centros que solicita?
+              ¿El alumno o alumna tiene HERMANOS ESCOLARIZADOS, PADRES o
+              TUTORES trabajando en alguno de los centros que solicita?
             </p>
           </div>
           <div class="calculator-item__element">
-            <select name="escolarizados">
-              <option value="si">Si</option>
+            <select name="escolarizados" id="linked-to-school">
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
         <!-- Aqui ira la relacion de los centros -->
-        <fieldset class="calculator-group">
+        <fieldset class="calculator-group" style="display:none">
           <legend class="calculator-group__title">
             Detalle de escolarización de familiares
           </legend>
           <div class="calculator-group__item">
-            <p class="calculator-group__label">Seleccione el/los centro(s)</p>
-            <select class="calculator-group__option" name="centro_w_Familiar">
-              <option value="eladio">Eladio Cabañero</option>
-              <option value="isidro">San Isidro</option>
-            </select>
-          </div>
-          <div class="calculator-group__item">
-            <p class="calculator-group__label" id="familiar_center">
-              Eladio Cabañero
+            <p class="calculator-group__label">
+              Seleccione el/los centro(s) e indique si el alumno o alumna 
+              tiene en el centro: hermanos matriculados o padres trabajando 
+              (o ambas cosas).
             </p>
-            <select class="calculator-group__option" name="centro_w_Familiar">
-              <option value="hermanos">Hermanos</option>
-              <option value="padres">Padres</option>
-              <option value="ambos">Ambos</option>
+            <select class="calculator-group__option" name="centros">
+              <!-- <option value="eladio">Eladio Cabañero</option>
+              <option value="isidro">San Isidro</option> -->
             </select>
+            <button id="add-school">
+              Añadir
+            </button>
           </div>
+          <div class="calculator-group__set">
+            
+          </div>
+          </fieldset>
+          
         </fieldset>
 
         <div class="calculator-item">
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Discapacidad</h4>
             <p class="calculator-item__enunciated">
-              El alumno o alumna, o alguno de sus padres o tutores legales, o
+              ¿El alumno o alumna, o alguno de sus padres o tutores legales, o
               alguno de sus hermanos o hermanas, tienen reconocido mediante
               dictamen emitido por el Organismo público competente un grado de
-              DISCAPACIDAD igual o superior al 33%
+              DISCAPACIDAD igual o superior al 33%?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="discapacidad">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
@@ -101,13 +105,13 @@
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Familia Numerosa</h4>
             <p class="calculator-item__enunciated">
-              Que la unidad familiar tiene condición legal de FAMILIA NUMEROSA
+              ¿Tiene la unidad familiar condición legal de FAMILIA NUMEROSA?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="fam_numerosa">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
@@ -116,29 +120,28 @@
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Familia Monoparental</h4>
             <p class="calculator-item__enunciated">
-              Que la unidad familiar tiene condición legal de FAMILIA
-              MONOPARENTAL
+              ¿Tiene la unidad familiar legal de FAMILIA MONOPARENTAL?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="fam_monoparental">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
 
         <div class="calculator-item">
           <div class="calculator-item__text">
-            <h4 class="calculator-item__question">parto Múltiple</h4>
+            <h4 class="calculator-item__question">Parto Múltiple</h4>
             <p class="calculator-item__enunciated">
-              Que el alumno o alumna nació en un parto múltiple
+              ¿El alumno o alumna nació en un parto múltiple?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="parto_multiple">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
@@ -147,14 +150,14 @@
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Acogimiento Familiar</h4>
             <p class="calculator-item__enunciated">
-              Que el alumno o alumna, se encuentra en SITUACIÓN DE ACOGIMIENTO
-              FAMILIAR
+              ¿El alumno o alumna, se encuentra en SITUACIÓN DE ACOGIMIENTO
+              FAMILIAR?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="acogimiento">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
@@ -163,14 +166,14 @@
           <div class="calculator-item__text">
             <h4 class="calculator-item__question">Víctima de género</h4>
             <p class="calculator-item__enunciated">
-              Que la unidad familiar tiene condición legal de víctima de
-              violencia de género o de terrorismo
+              ¿Tiene la unidad familiar condición legal de víctima de
+              violencia de género o de terrorismo?
             </p>
           </div>
           <div class="calculator-item__element">
             <select name="vic_genero">
-              <option value="si">Si</option>
               <option value="no">No</option>
+              <option value="si">Sí</option>
             </select>
           </div>
         </div>
@@ -215,6 +218,15 @@
         </table>
       </div>
     </div>
+
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@3.0.0/dist/umd/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-auth@3.0.0/dist/umd/auth.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer@3.0.0/dist/umd/feature-layer.umd.js"></script>
+    <script>
+      let allZones = null, allSchools = [], bordering;
+    </script>
+    <script type="module" src="js/map.js"></script>
     <script src="js/calculator-app.js" type="module"></script>
   </body>
 </html>
