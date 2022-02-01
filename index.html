@@ -132,6 +132,15 @@
             .top-images img{
                 max-width: 100%;;
             }
+            #message img{
+                vertical-align: middle;
+            }
+            .calculator-button-div{
+                display: none;
+            }
+            .calculator-button-div.visible{
+                display: block;
+            }
 
         </style>
         <div class="row top-images">
@@ -278,8 +287,15 @@
                            value="Consultar">
                 </form>
 
-                <p id="info-center"
-                   class=""></p>
+                <div id="info-center" class="" style="margin: 2rem 0">
+                    <div id="message">
+                        <img src="images/spinner.gif"> Buscando en esta zona
+                    </div>
+                    <p class="calculator-button-div" style="display:none !important">
+                        <button id="calculator-button">Mostrar la calculadora de puntos</button>
+                    </p>
+                </div>
+                <div class="calculator collapsed"></div>
 
                 <p class="acenter" style="font-size: 1.3rem;">
                     El siguiente mapa ha sido generado a partir del 
@@ -399,7 +415,7 @@
     <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer@3.0.0/dist/umd/feature-layer.umd.js"></script>
     <script>
-        let allZones = null, allSchools = [], bordering, executing = false;
+        let allZones = null, allSchools = [], bordering, schools, executing = false;
     </script>
     <script type="module" src="js/map.js"></script>
 </body>
