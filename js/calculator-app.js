@@ -36,6 +36,10 @@ function calculatePoints(event) {
         `;
         tbodyEl.appendChild(trEl);
     })
+    const resultsHidden = document.querySelector(".results.hidden");
+    if(resultsHidden){
+        resultsHidden.classList.remove("hidden")
+    }
     
     // console.log(`Values: `, inputValues);
     event.preventDefault();
@@ -218,7 +222,7 @@ function addSchoolField(event) {
             <option value="padres">Padre(s) trabajando</option>
             <option value="ambos">Ambos</option>
         </select>
-        <button data-schoolIndex="${start}">
+        <button data-schoolIndex="${start}" class="remove">
             Borrar
         </button>
     `;
@@ -319,10 +323,10 @@ function Main() {
     select.addEventListener('change',function(evt){
         const divEl = document.querySelector('.calculator-group');
         
-        if (divEl.style.display === "none") {
-            divEl.style.display = "block";
+        if (divEl.classList.contains("hidden")) {
+            divEl.classList.remove("hidden");
         } else {
-            divEl.style.display = "none";
+            divEl.classList.add("hidden");
         }
     });
 

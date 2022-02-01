@@ -256,7 +256,8 @@ h3 {
     border: 1px solid #ccc;
     outline: none; }
 
-#query-form [type="submit"] {
+#query-form [type="submit"],
+button {
   background-color: #c7a56a;
   border: 0;
   padding: 1.2rem;

@@ -60,6 +60,11 @@ function processForm(e) {
     if(executing === true){
       return false;
     }
+
+    const resultsNotHidden = document.querySelector(".results:not(.hidden)");
+    if(resultsNotHidden){
+        resultsNotHidden.classList.add("hidden")
+    }
     
     document.getElementById('message').innerHTML = `
       <img src="images/spinner.gif"> Buscando colegios correspondientes a ${document.getElementById("address").value}
