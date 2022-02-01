@@ -72,7 +72,7 @@ function sortDict( dict ) {
 function calculatePointsPerSchool(inputValues){
     const pointsPerSchool = {};
     
-    let pointsPer ={
+    let pointsPer = {
         singleParent: inputValues["fam_monoparental"].value === "si"? 2: 0,
         multipleBirth: inputValues["parto_multiple"].value === "si"? 2: 0,
         fosterCare: inputValues["acogimiento"].value === "si"? 2: 0,
@@ -108,8 +108,6 @@ function calculatePointsPerSchool(inputValues){
     
     let defaultPoints = 0;
     for (const [key, value] of Object.entries(pointsPer)) {
-        // console.log(key, value);
-        //location: inputValues["tipo_domicilio"].value === "familiar"? 10: 8,
         defaultPoints += value;
     }
     
@@ -295,7 +293,15 @@ function slugify(str)
 
 function Main() {
     console.log('estamos en Main ');
-    // Aqui ponemos el flujo normal que lleva la aplicacion. 
+    // Aqui ponemos el flujo normal que lleva la aplicacion.
+    
+    // Button to display calculator form
+    const calculatorBtn = document.getElementById('calculator-button');
+    calculatorBtn.addEventListener('click', () => {
+        if(document.querySelector('.calculator.collapsed')){
+            document.querySelector('.calculator.collapsed').classList.remove("collapsed");
+        }
+    });  
     
     const calculatorForm = document.getElementById('calculator-form');
     //   const log = document.getElementById('log');
@@ -308,7 +314,6 @@ function Main() {
     // Add dynamic behaviour to add family related schools
     const addCenter = document.getElementById('add-school');
     addCenter.addEventListener('click', addSchoolField);  
-
     
     var select = document.querySelector('#linked-to-school');
     select.addEventListener('change',function(evt){

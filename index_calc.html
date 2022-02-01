@@ -132,6 +132,15 @@
             .top-images img{
                 max-width: 100%;;
             }
+            #message img{
+                vertical-align: middle;
+            }
+            .calculator-button-div{
+                display: none;
+            }
+            .calculator-button-div.visible{
+                display: block;
+            }
 
         </style>
         <div class="row top-images">
@@ -278,7 +287,14 @@
                            value="Consultar">
                 </form>
 
-                <p id="info-center"class=""></p>
+                <div id="info-center" class="" style="margin: 2rem 0">
+                    <div id="message">
+                        <img src="images/spinner.gif"> Buscando en esta zona
+                    </div>
+                    <p class="calculator-button-div">
+                        <button id="calculator-button">Mostrar la calculadora de puntos</button>
+                    </p>
+                </div>
 
                 <!-- 
                     
@@ -286,7 +302,7 @@
                 
                 -->
 
-                <div class="calculator">
+                <div class="calculator collapsed">
                     <h2 class="calculator-title">Estimador de Puntos</h2>
                     <div class="disclaimer">
                       <p class="disclaimer__icon"><img src="images/Blinking_warning.gif" ></p>
@@ -465,8 +481,8 @@
                       <p>
                         Los puntos estimados correspondientes a cada centro
                         <span class="remark">
-                          tener en cuenta los criterios de renta per cápita y expediente
-                          académico*
+                          sin tener en cuenta los criterios de renta per cápita y expediente
+                          académico
                         </span>
                         son:
                       </p>
@@ -611,7 +627,7 @@
     <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-feature-layer@3.0.0/dist/umd/feature-layer.umd.js"></script>
     <script>
-        let allZones = null, allSchools = [], schools = [], bordering = [];
+        let allZones = null, allSchools = [], bordering, schools, executing = false;
     </script>
     <script type="module" src="js/map.js"></script>
     <script src="js/calculator-app.js" type="module"></script>

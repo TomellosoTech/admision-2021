@@ -57,6 +57,21 @@ function getBorderingSchools(addressZone) {
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
+    if(executing === true){
+      return false;
+    }
+    
+    document.getElementById('message').innerHTML = `
+      <img src="images/spinner.gif"> Buscando colegios correspondientes a ${document.getElementById("address").value}
+    `;
+    if(document.querySelector('.calculator').classList.contains("collapsed") === false){
+      document.querySelector('.calculator').classList.add("collapsed");
+    }
+    if(document.querySelector('.calculator-button-div').classList.contains("visible") === true){
+      document.querySelector('.calculator-button-div').classList.remove("visible");
+    }
+    
+    executing = true;
     arcgisRest.geocode({
         address: document.getElementById("address").value,
         postal: 13700,
@@ -66,12 +81,13 @@ function processForm(e) {
         authentication
     })
         .then((response) => {
-            console.log("Candidates:", response.candidates);
+            // console.log("Candidates:", response.candidates);
             if (response.candidates[0].address == 13700) {
-                elem = document.getElementById("info-center")
+                let elem = document.getElementById("info-center")
                 elem.classList.remove('success');
                 elem.classList.add('error');
-                document.getElementById("info-center").innerHTML = "Lo sentimos, no hemos sido capaces de encontrar tu dirección"
+                document.getElementById("message").innerText = `Lo sentimos, no hemos sido capaces de encontrar tu dirección`;
+                executing = false;
                 return -1;
             }
             // Reload map
@@ -125,7 +141,7 @@ function processForm(e) {
                 outSR: 4326
             })
                 .then(response => {
-                    console.log(response.features);
+                    // console.log(response.features);
                     let elem = document.getElementById("info-center")
                     elem.classList.add('success');
                     elem.classList.remove('error');
@@ -143,11 +159,26 @@ function processForm(e) {
                             }
                             return previousValue += `<br> &bull; ${currentValue.attributes.Nombre}`;
                         });
-                        document.getElementById("info-center").innerHTML = `Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, por favor revisa en el mapa que la hemos ubicado correctamente.<br><br>Los centros de Infantil y Primaria que se encuentran en esta zona son: <br>${response.features[0].attributes.Puntos}<br><br>Y los de las zonas limítrofes son: ${borderingSchoolsStr}.`;
+                        
+                        const message = document.createElement("p");
+                        message.innerHTML = `
+                          <p>
+                            Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, 
+                            por favor revisa en el mapa, más abajo, que la hemos ubicado correctamente.<br><br>
+                            Los centros de Infantil y Primaria que se encuentran en esta zona son: 
+                            <br>${response.features[0].attributes.Puntos}<br><br>
+                            Y los de las zonas limítrofes son: ${borderingSchoolsStr}.
+                          </p>
+                        `;
+                        document.getElementById('message').innerHTML = '';
+                        document.querySelector("#message").prepend(message);
+                        document.querySelector(".calculator-button-div").classList.add("visible")
+                        executing = false;
                     });
 
-                    console.log("addressZone.geometry=",addressZone.geometry)
+                    // console.log("addressZone.geometry=",addressZone.geometry)
                     // Get schools in my zone
+                    schools = [];
                     arcgisRest.queryFeatures({
                       url: "https://services.arcgis.com/Q6ZFRRvMTlsTTFuP/arcgis/rest/services/Colegios_Tomelloso_2/FeatureServer/0",
                       geometry: addressZone.geometry,
