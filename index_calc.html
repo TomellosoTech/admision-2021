@@ -350,7 +350,7 @@
                         </div>
                       </div>
                       <!-- Aqui ira la relacion de los centros -->
-                      <fieldset class="calculator-group" style="display:none">
+                      <fieldset class="calculator-group">
                         <legend class="calculator-group__title">
                           Detalle de escolarización de familiares
                         </legend>
@@ -361,20 +361,19 @@
                             (o ambas cosas).
                           </p>
                           <select class="calculator-group__option" name="centros">
-                            <!-- <option value="eladio">Eladio Cabañero</option>
-                            <option value="isidro">San Isidro</option> -->
+                             <option value="eladio">Eladio Cabañero</option>
+                            <option value="isidro">San Isidro</option>
                           </select>
-                          <button id="add-school">
+                         
+                        </div>
+                        <div class="calculator-group__set">
+                           <button id="add-school" class="calculator-btn">
                             Añadir
                           </button>
                         </div>
-                        <div class="calculator-group__set">
-                          
-                        </div>
                         </fieldset>
                         
-                      </fieldset>
-              
+                    
                       <div class="calculator-item">
                         <div class="calculator-item__text">
                           <h4 class="calculator-item__question">Discapacidad</h4>
@@ -473,7 +472,10 @@
                           </select>
                         </div>
                       </div>
-                      <button type="submit">Calcular</button>
+                      <div class="calculator-btn-container">
+                        <button class="calculator-btn"type="submit">Calcular</button>
+                      </div>
+                      
                     </form>
               
                     <div class="results">
@@ -493,7 +495,22 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
+                          <tr>
+                              <td>Row 1, Cell 1</td>
+                              <td>Row 1, Cell 2</td>
+                            </tr>
+                            <tr>
+                              <td>Row 2, Cell 1</td>
+                              <td>Row 2, Cell 2</td>
+                            </tr>
+                            <tr>
+                              <td>Row 3, Cell 1</td>
+                              <td>Row 3, Cell 2</td>
+                            </tr>
+                            <tr>
+                              <td>Row 4, Cell 1</td>
+                              <td>Row 4, Cell 2</td>
+                            </tr>
                         </tbody>
                       </table>
                       <p>
