@@ -54,6 +54,35 @@ function getBorderingSchools(addressZone) {
   });
 }
 
+function animate(elem, style, unit, from, to, time, prop) {
+    if (!elem) {
+      return;
+    }
+    var start = new Date().getTime(),
+      timer = setInterval(function() {
+        var step = Math.min(1, (new Date().getTime() - start) / time);
+        if (prop) {
+          elem[style] = (from + step * (to - from)) + unit;
+        } else {
+          elem.style[style] = (from + step * (to - from)) + unit;
+        }
+        if (step === 1) {
+          clearInterval(timer);
+        }
+      }, 25);
+    if (prop) {
+      elem[style] = from + unit;
+    } else {
+      elem.style[style] = from + unit;
+    }
+  }
+
+window.smoothScroll = function (){
+    var target = document.getElementById("dashboard");
+    var target = document.getElementById("dashboard");
+    animate(document.scrollingElement || document.documentElement, "scrollTop", "", window.pageYOffset, target.offsetTop, 1000, true);
+}
+
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
@@ -171,7 +200,7 @@ function processForm(e) {
                         message.innerHTML = `
                           <p>
                             Hemos ubicado la dirección en la ${response.features[0].attributes.Nombre}, 
-                            por favor revisa más abajo, en el mapa, que se ha ubicado correctamente.<br><br>
+                            por favor revisa en <a href="#dashboard" onclick="smoothScroll()">el mapa</a>, que se ha ubicado correctamente.<br><br>
                             Los centros de Infantil y Primaria que se encuentran en esta zona son: 
                             <br>${response.features[0].attributes.Puntos}<br><br>
                             Y los de las zonas limítrofes son: ${borderingSchoolsStr}.
