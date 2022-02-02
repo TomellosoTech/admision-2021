@@ -67,6 +67,7 @@ button:hover{
 fieldset{
   border-color: #ccc;
   border-style: dotted;
+  margin-bottom: 2rem;
 }
 .calculator-group {
   display: flex;

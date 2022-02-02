@@ -67,7 +67,7 @@ function processForm(e) {
     }
     
     document.getElementById('message').innerHTML = `
-      <img src="images/spinner.gif"> Buscando colegios correspondientes a ${document.getElementById("address").value}
+      <img src="images/spinner.gif"> Buscando coincidencias
     `;
     if(document.querySelector('.calculator').classList.contains("collapsed") === false){
       document.querySelector('.calculator').classList.add("collapsed");
@@ -95,6 +95,8 @@ function processForm(e) {
                 executing = false;
                 return -1;
             }
+            
+            document.getElementById("address-span").innerText = response.candidates[0].address;
             // Reload map
             var data = {
                 'webmap': '1db22a3fd99b4f9dab2c9432cf0f1d2d',
@@ -168,8 +170,8 @@ function processForm(e) {
                         const message = document.createElement("p");
                         message.innerHTML = `
                           <p>
-                            Hemos ubicado tu calle en la ${response.features[0].attributes.Nombre}, 
-                            por favor revisa en el mapa, más abajo, que la hemos ubicado correctamente.<br><br>
+                            Hemos ubicado la dirección en la ${response.features[0].attributes.Nombre}, 
+                            por favor revisa más abajo, en el mapa, que se ha ubicado correctamente.<br><br>
                             Los centros de Infantil y Primaria que se encuentran en esta zona son: 
                             <br>${response.features[0].attributes.Puntos}<br><br>
                             Y los de las zonas limítrofes son: ${borderingSchoolsStr}.

@@ -309,9 +309,9 @@
                       <p class="disclaimer__text">
                         AVISO: Esta calculadora de puntos es una <strong>"estimación aproximada y no oficial"</strong>
                         y nunca deberán ser tenidos en cuenta como tal. El objetivo es dar una
-                        estimación orientativa en base a algunos de los criterios de admisión
-                        del alumnado serán valorados de acuerdo con el baremo publicado por la
-                        JCCM.
+                        estimación aproximada en base <strong>casi todos</strong> los criterios de admisión
+                        del alumnado de acuerdo con el <a href="images/Baremo - Guia familias EI-EP-ESO 2022.png">baremo publicado por la
+                        JCCM</a>.
                       </p>
                     </div>
                     <form id="calculator-form">
@@ -322,7 +322,7 @@
                           </h4>
                              <p class="calculator-item__enunciated">
                             <em><strong>Nota</strong>: El cálculo se hará teniendo en cuenta que el domicilio se
-                            encuentra en "[Domicilio de la caja de búsqueda]". Si desea que
+                            encuentra en "<span id="address-span">[Domicilio de la caja de búsqueda]</span>". Si desea que
                             sea otro, por favor vuelva a introducirlo.</em>
                           </p>
                         </div>
@@ -352,20 +352,18 @@
                       <!-- Aqui ira la relacion de los centros -->
                       <fieldset class="calculator-group hidden">
                         <legend class="calculator-group__title">
-                          Detalle de escolarización de familiares
+                          Relación familiar con el o los centros
                         </legend>
 
                         <div class="calculator-group__item">
                           <p class="calculator-group__label">
-                            Seleccione el/los centro(s) e indique si el alumno o alumna 
-                            tiene en el centro: hermanos matriculados o padres trabajando 
-                            (o ambas cosas).
+                            Primero añada el o los centros, y después indique la relación que el alumno o alumna mantiene con el mismo.
                           </p>
 
                           <select class="calculator-group__option" name="centros">
                           </select>
                           <button id="add-school" class="calculator-btn">
-                            Añadir
+                            Añadir centro
                           </button>
                         </div>
 
@@ -382,16 +380,16 @@
                           <p class="calculator-item__enunciated">
                             ¿El alumno o alumna, o alguno de sus padres o tutores legales, o
                             alguno de sus hermanos o hermanas, tienen reconocido mediante
-                            dictamen emitido por el Organismo público competente un grado de
+                            dictamen emitido por el Organismo Público competente un grado de
                             DISCAPACIDAD igual o superior al 33%?
                           </p>
                         </div>
                         <div class="calculator-item__element">
                           <select name="discapacidad">
                             <option value="no">No</option>
-                            <option value="alumno">Sí, el alumno o alumna solicitante</option>
-                            <option value="padres">Sí, alguno de sus padres o tutores legales del alumno o alumna solicitante</option>
-                            <option value="hermano">Sí, alguno de los hermanos o hermanas del alumno o alumna solicitante</option>
+                            <option value="alumno">Sí, el alumno o alumna solicitante (3 puntos)</option>
+                            <option value="padres">Sí, alguno de sus padres o tutores legales del alumno o alumna solicitante (2 puntos)</option>
+                            <option value="hermano">Sí, alguno de los hermanos o hermanas del alumno o alumna solicitante (1 punto)</option>
                             
                           </select>
                         </div>
@@ -417,7 +415,7 @@
                         <div class="calculator-item__text">
                           <h4 class="calculator-item__question">Familia Monoparental</h4>
                           <p class="calculator-item__enunciated">
-                            ¿Tiene la unidad familiar legal de FAMILIA MONOPARENTAL?
+                            ¿Tiene la unidad familiar condición legal de FAMILIA MONOPARENTAL?
                           </p>
                         </div>
                         <div class="calculator-item__element">
@@ -461,7 +459,7 @@
               
                       <div class="calculator-item">
                         <div class="calculator-item__text">
-                          <h4 class="calculator-item__question">Víctima de género</h4>
+                          <h4 class="calculator-item__question">Víctima de género o terrorismo</h4>
                           <p class="calculator-item__enunciated">
                             ¿Tiene la unidad familiar condición legal de víctima de
                             violencia de género o de terrorismo?
@@ -485,7 +483,7 @@
                       <p>
                         Los puntos estimados correspondientes a cada centro
                         <span class="remark">
-                          sin tener en cuenta los criterios de renta per cápita
+                          sin tener en cuenta el criterio de renta per cápita
                         </span>
                         son:
                       </p>

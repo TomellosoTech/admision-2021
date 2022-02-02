@@ -209,7 +209,7 @@ function addSchoolField(event) {
     });
     newSchool.innerHTML = `
         <p class="calculator-group__label">
-            En el ${centrosOption.innerText} tiene 
+            En el <strong>${centrosOption.innerText}</strong> el alumno o alumna tiene: 
         </p>
         <select 
             class="calculator-group__option" 
@@ -218,9 +218,9 @@ function addSchoolField(event) {
             data-schoolName="${centrosOption.innerText}"
         >
             <option value="null">-</option>
-            <option value="hermanos">Hermanos matriculados</option>
-            <option value="padres">Padre(s) trabajando</option>
-            <option value="ambos">Ambos</option>
+            <option value="hermanos">Hermanos escolarizados (10 puntos)</option>
+            <option value="padres">Padre(s) o tutor(es) trabajando (8 puntos)</option>
+            <option value="ambos">Ambos (10 puntos)</option>
         </select>
         <button data-schoolIndex="${start}" class="remove">
             Borrar
